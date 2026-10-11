@@ -13,7 +13,7 @@ type RevealProps = {
 let observer: IntersectionObserver | undefined;
 let observed = 0;
 
-export default function Reveal({ children, delay = 0, className = "", as = "div" }: RevealProps) {
+export default function Reveal({ children, className = "", as = "div" }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const element = ref.current;
@@ -23,7 +23,7 @@ export default function Reveal({ children, delay = 0, className = "", as = "div"
       !("IntersectionObserver" in window)
     )
       return;
-    if (element.getBoundingClientRect().top <= window.innerHeight + 180) return;
+    if (element.getBoundingClientRect().top <= window.innerHeight + 600) return;
     observer ??= new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -33,7 +33,7 @@ export default function Reveal({ children, delay = 0, className = "", as = "div"
           }
         }
       },
-      { threshold: 0, rootMargin: "180px 0px" },
+      { threshold: 0, rootMargin: "600px 0px" },
     );
     element.classList.remove("is-visible");
     observer.observe(element);
@@ -51,7 +51,6 @@ export default function Reveal({ children, delay = 0, className = "", as = "div"
     <Tag
       ref={ref}
       className={`reveal-on-scroll is-visible ${className}`}
-      style={{ transitionDelay: `${Math.min(delay, 80)}ms` }}
     >
       {children}
     </Tag>

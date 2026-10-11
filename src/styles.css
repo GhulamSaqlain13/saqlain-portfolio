@@ -571,11 +571,10 @@ main {
 }
 
 @utility reveal-on-scroll {
-  opacity: 0;
-  transform: translateY(26px);
-  transition:
-    opacity 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
-    transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+  /* Keep content readable during fast scrolls and before hydration. */
+  opacity: 1;
+  transform: translateY(8px);
+  transition: transform 0.18s ease-out;
   &.is-visible {
     opacity: 1;
     transform: none;
@@ -3060,14 +3059,11 @@ html {
   border-color: var(--brand);
 }
 html[data-site-motion="on"] .reveal-on-scroll {
-  transform: perspective(1200px) translateY(28px) rotateX(5deg);
-  transform-origin: center bottom;
-  transition:
-    opacity 0.35s ease,
-    transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transform: translateY(8px);
+  transition: transform 0.18s ease-out;
 }
 html[data-site-motion="on"] .reveal-on-scroll.is-visible {
-  transform: perspective(1200px) translateY(0) rotateX(0);
+  transform: none;
 }
 html[data-site-motion="on"] :is(.work-preview, .about-portrait-frame) {
   transform: perspective(1100px) translateY(var(--scroll-lift, 0px))
