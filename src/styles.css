@@ -3942,3 +3942,31 @@ main section > div[class*="max-w-[1400px]"] {
     row-gap: 2.5rem;
   }
 }
+
+/* Keep the desktop portrait on the hero's centerline with balanced text columns. */
+@media (min-width: 1101px) {
+  .hero-content {
+    grid-template-columns: minmax(0, 1fr) clamp(280px, 28vw, 360px) minmax(0, 1fr);
+    align-items: center;
+    column-gap: clamp(1.5rem, 3vw, 3rem);
+    padding-top: 3.5rem;
+    padding-bottom: 3rem;
+  }
+  .hero-portrait-frame {
+    align-self: center;
+    justify-self: center;
+    width: 100%;
+    height: clamp(380px, 32vw, 460px);
+    align-items: center;
+  }
+  .hero-portrait {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: center;
+    -webkit-mask-image: linear-gradient(to bottom, #000 78%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 78%, transparent 100%);
+  }
+}
