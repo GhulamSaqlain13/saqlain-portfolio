@@ -3782,14 +3782,14 @@ html[data-site-motion="off"] .assistant-orb * {
 
 /* Shared responsive content edges across every page and section. */
 :root {
-  --site-width: 1260px;
+  --site-width: 1440px;
   --site-gutter: clamp(1.25rem, 3.2vw, 2.5rem);
 }
 .site-header,
 .hero-content,
 .hero-focus,
 .trust-panel__inner,
-.approach-section,
+.approach-section__inner,
 .services-section__inner,
 .skills-section__inner,
 .site-footer__inner,
