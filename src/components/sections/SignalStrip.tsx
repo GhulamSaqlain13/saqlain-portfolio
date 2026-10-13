@@ -30,7 +30,7 @@ export default function SignalStrip({ compact = false }: { compact?: boolean }) 
   return (
     <>
       <div className="trust-panel">
-        <div className="flex flex-col gap-8 px-6 py-12 md:flex-row md:items-center md:gap-12 md:px-10 md:py-14">
+        <div className="trust-panel__inner flex flex-col gap-8 px-6 py-12 md:flex-row md:items-center md:gap-12 md:px-10 md:py-14">
           <p className="shrink-0 text-sm font-medium leading-snug text-white">
             Built with tools
             <br />
@@ -56,7 +56,7 @@ export default function SignalStrip({ compact = false }: { compact?: boolean }) 
       </div>
 
       {!compact && (
-        <section className="px-6 py-24 md:px-10 md:py-32">
+        <section className="approach-section px-6 py-24 md:px-10 md:py-32">
           <div className="grid gap-12 md:grid-cols-2 md:gap-16">
             <Reveal>
               <p className="text-xl font-medium text-brand md:text-2xl">My Approach</p>
