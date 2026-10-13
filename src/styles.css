@@ -3826,10 +3826,6 @@ main section > div[class*="max-w-[1400px]"] {
   min-width: 0;
 }
 
-
-
-
-
 .trust-panel__inner {
   flex-wrap: wrap;
 }
@@ -3844,11 +3840,7 @@ main section > div[class*="max-w-[1400px]"] {
 }
 
 @media (max-width: 767px) {
-  
-  
-  
-  
-  
+
   .skills-section__heading,
   .services-section__header {
     grid-template-columns: minmax(0, 1fr);
@@ -3880,4 +3872,45 @@ main section > div[class*="max-w-[1400px]"] {
 }
 
 
-
+/* Preserve the original layered hero composition as the viewport grows. */
+@media (min-width: 768px) {
+  .hero-portrait {
+    left: calc(50% + min(2vw, 28px));
+    max-height: 760px;
+    max-width: min(65vw, 700px);
+    object-position: center bottom;
+  }
+}
+@media (min-width: 1440px) {
+  .hero-content {
+    grid-template-columns: minmax(0, 1fr) 18rem;
+  }
+}
+@media (max-width: 767px) {
+  .hero-content {
+    padding-top: 3rem;
+    padding-bottom: 2.5rem;
+    gap: 1.75rem;
+  }
+  .hero-title {
+    font-size: clamp(2.65rem, 11vw, 4.6rem);
+  }
+  .hero-portrait {
+    left: 80%;
+    bottom: 6rem;
+    height: 64%;
+    max-height: 540px;
+    max-width: none;
+    opacity: 0.3;
+  }
+  .hero-description {
+    max-width: min(23rem, 90%);
+  }
+  .hero-focus {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem 1rem;
+  }
+  .hero-actions {
+    gap: 1rem;
+  }
+}
