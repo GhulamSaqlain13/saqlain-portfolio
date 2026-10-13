@@ -12,12 +12,12 @@ export default function AboutPage() {
       <section className="border-t border-border py-24 md:py-40">
         <div className="mx-auto grid w-full max-w-[1400px] gap-16 px-6 md:grid-cols-12 md:gap-20 md:px-10">
           <Reveal className="md:col-span-5">
-            <div className="relative overflow-hidden border border-border bg-secondary">
+            <div className="about-portrait-frame relative overflow-hidden border border-border bg-secondary">
               <img
                 src={portrait.src}
                 alt="Ghulam Saqlain, full stack developer"
-                width={1024}
-                height={1280}
+                width={portrait.width}
+                height={portrait.height}
                 loading="lazy"
                 className="w-full select-none"
               />

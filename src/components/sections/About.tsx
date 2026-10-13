@@ -10,8 +10,8 @@ export default function About() {
             <img
               src={portrait.src}
               alt="Ghulam Saqlain, full stack developer"
-              width={1024}
-              height={1280}
+              width={portrait.width}
+              height={portrait.height}
               loading="lazy"
               className="w-full select-none"
             />

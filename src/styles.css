@@ -3914,3 +3914,21 @@ main section > div[class*="max-w-[1400px]"] {
     gap: 1rem;
   }
 }
+
+/* Fill the About frame edge to edge instead of containing the portrait. */
+.about-portrait-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+.about-portrait-frame img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  object-fit: cover;
+  object-position: center 35%;
+}
