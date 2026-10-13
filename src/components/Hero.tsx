@@ -1,15 +1,56 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Navbar, { PillButton } from "@/components/Navbar";
 import Link from "next/link";
 import portrait from "@/assets/me-Photoroom.png";
 
 const FOCUS = ["Business Websites", "Web Applications", "E-Commerce", "MVP Development"];
 
+function useParallax() {
+  const portraitRef = useRef<HTMLImageElement>(null);
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce), (pointer: coarse)").matches) return;
+    let frame = 0;
+    let x = 0;
+    let y = 0;
+    const onMove = (event: MouseEvent) => {
+      x = event.clientX / window.innerWidth - 0.5;
+      y = event.clientY / window.innerHeight - 0.5;
+      if (!frame)
+        frame = requestAnimationFrame(() => {
+          frame = 0;
+          if (portraitRef.current)
+            portraitRef.current.style.transform = `translate3d(calc(-50% + ${x * 10}px), ${y * 6}px, 0)`;
+        });
+    };
+    const hero = portraitRef.current?.parentElement;
+    hero?.addEventListener("mousemove", onMove, { passive: true });
+    return () => {
+      hero?.removeEventListener("mousemove", onMove);
+      cancelAnimationFrame(frame);
+    };
+  }, []);
+  return portraitRef;
+}
 export default function Hero({ services = false }: { services?: boolean }) {
+  const portraitRef = useParallax();
+
   return (
     <div id="top" className="hero-card relative">
       <Navbar />
+
+      <img
+        ref={portraitRef}
+        src={portrait.src}
+        fetchPriority="high"
+        decoding="async"
+        alt="Portrait of Ghulam Saqlain"
+        width={1024}
+        height={1280}
+        className="hero-portrait parallax"
+        style={{ transform: "translate3d(-50%, 0, 0)" }}
+      />
 
       <section className="hero-content relative z-10">
         <div>
@@ -26,18 +67,6 @@ export default function Hero({ services = false }: { services?: boolean }) {
             <br />
             {services ? "Real Impact." : "Developer"}
           </h1>
-        </div>
-
-        <div className="hero-portrait-frame">
-          <img
-            src={portrait.src}
-            fetchPriority="high"
-            decoding="async"
-            alt="Portrait of Ghulam Saqlain"
-            width={portrait.width}
-            height={portrait.height}
-            className="hero-portrait"
-          />
         </div>
 
         <div className="reveal hero-description" style={{ animationDelay: "260ms" }}>
